@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-brain"></i> Brain Tumor Prediction</h1>
+            <p>A Cutting-Edge Tool by ABOU_BIRANE for Tumor Classification</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="prediction-form">
+            <h2>Predict Tumor Type</h2>
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="model"><i class="fas fa-cogs"></i> Select a Model:</label>
+                    <select name="model" id="model">
+                        <option value="pytorch" {% if selected_model != 'tensorflow' %}selected{% endif %}>PyTorch</option>
+                        <option value="tensorflow" {% if selected_model == 'tensorflow' %}selected{% endif %}>TensorFlow</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="image_path"><i class="fas fa-image"></i> Upload an Image:</label>
+                    <input type="file" name="image_path" id="image_path" accept="image/*">
+                </div>
+                <button type="submit" class="predict-button"><i class="fas fa-search"></i> Predict</button>
+            </form>
+        </div>
+
+        {% if metrics %}
+            <div class="metrics-section">
+                <h2><i class="fas fa-chart-line"></i> Model Metrics for {{ selected_model | capitalize }}</h2>
+                <p><strong>Accuracy:</strong> {{ metrics.accuracy | round(2) }}%</p>
+            </div>
+        {% endif %}
+
+        {% if prediction %}
+            <div class="prediction-result">
+                <h2><i class="fas fa-check-circle"></i> Prediction Result: {{ prediction | capitalize }}</h2>
+                {% if probabilities %}
+                    <h3>Prediction Probabilities</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Class</th>
+                                <th>Probability</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in range(4) %}
+                                <tr>
+                                    <td>{{ ['Glioma', 'Meningioma', 'Notumor', 'Pituitary'][i] }}</td>
+                                    <td>{{ (probabilities[i] * 100) | round(2) }}%</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="error-message">
+                <h2><i class="fas fa-exclamation-circle"></i> Error: {{ error }}</h2>
+            </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>© 2025 ABOU_BIRANE. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

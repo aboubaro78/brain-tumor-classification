@@ -1,0 +1,286 @@
+/* Réinitialisation des styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style de l'en-tête */
+header {
+    background: #1976d2;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.header-content h1 i {
+    margin-right: 0.5rem;
+    color: #ffca28;
+}
+
+.header-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Style du conteneur */
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    flex: 1;
+}
+
+/* Style du formulaire de prédiction */
+.prediction-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.prediction-form h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #1976d2;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.form-group label i {
+    margin-right: 0.5rem;
+    color: #1976d2;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    background: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #1976d2;
+    box-shadow: 0 0 5px rgba(25, 118, 210, 0.3);
+}
+
+/* Style pour le champ de téléchargement */
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    background: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="file"]:focus {
+    outline: none;
+    border-color: #1976d2;
+    box-shadow: 0 0 5px rgba(25, 118, 210, 0.3);
+}
+
+.form-group input[type="file"]::file-selector-button {
+    background: #1976d2;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+    background: #1565c0;
+}
+
+.predict-button {
+    background: #1976d2;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.predict-button i {
+    margin-right: 0.5rem;
+}
+
+.predict-button:hover {
+    background: #1565c0;
+    transform: translateY(-2px);
+}
+
+.predict-button:active {
+    transform: translateY(0);
+}
+
+/* Style de la section des métriques */
+.metrics-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.metrics-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1976d2;
+}
+
+.metrics-section h2 i {
+    margin-right: 0.5rem;
+    color: #ffca28;
+}
+
+.metrics-section p {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* Style des résultats de prédiction */
+.prediction-result {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.prediction-result h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2e7d32;
+}
+
+.prediction-result h2 i {
+    margin-right: 0.5rem;
+    color: #ffca28;
+}
+
+.prediction-result h3 {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background: #1976d2;
+    color: white;
+    font-weight: 600;
+}
+
+td {
+    background: #f9f9f9;
+    color: #333;
+}
+
+/* Style des messages d'erreur */
+.error-message {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.error-message h2 {
+    font-size: 1.5rem;
+    color: #d32f2f;
+}
+
+.error-message h2 i {
+    margin-right: 0.5rem;
+    color: #ffca28;
+}
+
+/* Style du pied de page */
+footer {
+    background: #1976d2;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+/* Design responsive */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+
+    .header-content p {
+        font-size: 1rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .prediction-form h2 {
+        font-size: 1.5rem;
+    }
+
+    .predict-button {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+    }
+}
